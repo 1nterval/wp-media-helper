@@ -1,9 +1,15 @@
-wp-media-helper
-===============
+=== 1player ===
+Contributors: fab1en
+Tags: media
+Requires at least: 3.0.1
+Tested up to: 3.4
+Stable tag: 1.0
+License: GPLv3 or later
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-A Wordpress plugin that adds several helpers to the default WP Media Management.
+Adds several helpers to the default WP Media Management.
 
-### Description
+== Description ==
 
 This plugin adds several helpers to the default WP Media Management. Each helper tries to be as tiny as possible (as a feature and as lines of code) and independent from the other helpers. Helpers can be enabled one by one.The aim is to provide a fine control and to avoid all possible conflicts. 
 
@@ -14,20 +20,14 @@ This plugin adds several helpers to the default WP Media Management. Each helper
  - Change the parent of a previously attached media
  - Change the file of a media without creating a new media entry
 
-### License
+== Installation ==
 
-© Copyright 2013 Fabien Quatravaux
+Upload the plugin files in your wp-content/plugins directory and go to the Plugins menu to activate it. 
+Go to Settings > Media menu to enable particular helpers.
 
-wp-media-helper is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
+== Changelog ==
 
-wp-media-helper is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
+= 1.0 =
+* Initial published version
 
-You should have received a copy of the GNU General Public License
-along with wp-media-helper.  If not, see <http://www.gnu.org/licenses/>
 
