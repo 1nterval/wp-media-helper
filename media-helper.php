@@ -4,7 +4,7 @@
  * Author URI: http://www.1nterval.com
  * Description: Advanced helpers tasks for media
  * Author: Fabien Quatravaux
- * Version: 1.0
+ * Version: 1.1
  * Text Domain: mediahelper
  *
  * This plugin adds several helpers to the default WP Media Management :
