@@ -110,8 +110,14 @@ if ( is_admin() ){
         add_settings_field('mediahelper_select_tasks', '<label for="mediahelper_select_tasks">'.__('Select helpers','mediahelper').'</label>', 'mediahelper_settings_select_tasks', 'media', 'mediahelper');
         function mediahelper_settings_select_tasks(){
             global $text;
-            $options = get_option('mediahelper');
-            if(!is_array($options)) return;
+            $options = get_option('mediahelper', array(
+                'url_media' => array('active' => false),
+                'duplicate_media' => array('active' => false),
+                'limit_image_resolution' => array('active' => false),
+                'update_media_permalink' => array('active' => false),
+                'change_parent' => array('active' => false),
+                'change_media_file' => array('active' => false),
+            ));
             
             foreach($text as $name => $labels){ 
                 $option = isset($options[$name]) ? $options[$name] : array('active' => false); ?>
