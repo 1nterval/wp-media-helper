@@ -191,8 +191,8 @@ function mediahelper_url_media_async_save_media(){
     $attachment_id = wp_insert_attachment(array(
         'post_mime_type' => $mime,
         'post_parent' => $post_id,
-        'post_title' => $_REQUEST['title'] ? $_REQUEST['title'] : '',
-        'post_excerpt' => $_REQUEST['caption'] ? $_REQUEST['caption'] : '',
+        'post_title' => isset($_REQUEST['title']) ? $_REQUEST['title'] : '',
+        'post_excerpt' => isset($_REQUEST['caption']) ? $_REQUEST['caption'] : '',
         'guid' => $_REQUEST['src'],
     ), false, $post_id);
 
