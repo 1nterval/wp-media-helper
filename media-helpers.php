@@ -31,6 +31,7 @@ function mediahelper_install() {
 	    'update_media_permalink' => array('active' => false),
 	    'change_parent' => array('active' => false),
 	    'change_media_file' => array('active' => false),
+	    'rich_desc' => array('active' => false),
 	));
 }
 
@@ -101,6 +102,10 @@ if ( is_admin() ){
                 'title' => __('Change media file', 'mediahelper'), 
                 'desc' => __('Upload a new media file without recreating the media in the database', 'mediahelper'),
              ),
+             'rich_desc' => array(
+                'title' => __('Rich description', 'mediahelper'), 
+                'desc' => __('Use a rich editor for medias description', 'mediahelper'),
+             ),
         );
         
         add_settings_section('mediahelper', __('Media Helpers','mediahelper'), 'mediahelper_settings_section', 'media');
@@ -117,6 +122,7 @@ if ( is_admin() ){
                 'update_media_permalink' => array('active' => false),
                 'change_parent' => array('active' => false),
                 'change_media_file' => array('active' => false),
+                'rich_desc' => array('active' => false),
             ));
             
             foreach($text as $name => $labels){ 

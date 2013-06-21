@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Media helper 1.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/media-helpers\n"
-"POT-Creation-Date: 2013-06-21 07:20:45+00:00\n"
+"POT-Creation-Date: 2013-06-21 10:54:28+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: admin/change_media_file.php:13 media-helpers.php:101
+#: admin/change_media_file.php:13 media-helpers.php:102
 msgid "Change media file"
 msgstr ""
 
@@ -50,62 +50,70 @@ msgstr ""
 msgid "Insert from URL"
 msgstr ""
 
-#: media-helpers.php:81
+#: media-helpers.php:82
 msgid "URL media"
 msgstr ""
 
-#: media-helpers.php:82
+#: media-helpers.php:83
 msgid ""
 "Use an url as the media file and save it to the database like an uploaded "
 "media. You can also attach a new media to a post without specifying any "
 "file. This allows you to work on the media without having the file yet."
 msgstr ""
 
-#: media-helpers.php:85
+#: media-helpers.php:86
 msgid "Duplicate media"
 msgstr ""
 
-#: media-helpers.php:86
+#: media-helpers.php:87
 msgid ""
 "Make a copy of a media with all its meta keys so that it can be used "
 "elsewhere"
 msgstr ""
 
-#: media-helpers.php:89
+#: media-helpers.php:90
 msgid "Limit image resolution"
 msgstr ""
 
-#: media-helpers.php:90
+#: media-helpers.php:91
 msgid ""
 "Limit the resolution of uploaded images (WP allows you to limit the "
 "filesize, but not the resolution)"
 msgstr ""
 
-#: media-helpers.php:93
+#: media-helpers.php:94
 msgid "Update media permalink"
 msgstr ""
 
-#: media-helpers.php:94
+#: media-helpers.php:95
 msgid "Update a media permalink each time its title is changed"
 msgstr ""
 
-#: media-helpers.php:97
+#: media-helpers.php:98
 msgid "Change parent"
 msgstr ""
 
-#: media-helpers.php:98
+#: media-helpers.php:99
 msgid "Change the parent of a previously attached media"
 msgstr ""
 
-#: media-helpers.php:102
+#: media-helpers.php:103
 msgid "Upload a new media file without recreating the media in the database"
 msgstr ""
 
 #: media-helpers.php:106
+msgid "Rich description"
+msgstr ""
+
+#: media-helpers.php:107
+msgid "Use a rich editor for medias description"
+msgstr ""
+
+#: media-helpers.php:111
 msgid "Media Helpers"
 msgstr ""
 
-#: media-helpers.php:110
+#: media-helpers.php:115
 msgid "Select helpers"
 msgstr ""
 
