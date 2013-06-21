@@ -17,7 +17,7 @@ function mediahelper_url_media_print_assets(){
 
 add_filter('media_view_strings', 'mediahelper_url_media_string', 10, 2);
 function mediahelper_url_media_string($strings,  $post){
-    $strings['mediahelper_insertFromURL'] = __('from URL');
+    $strings['mediahelper_insertFromURL'] = __('Insert from URL', 'mediahelper');
     $strings['mediahelper_save'] = __('Save');
     return $strings;
 }
@@ -209,9 +209,9 @@ function mediahelper_url_media_after_upload(){
     if(strpos($_SERVER['REQUEST_URI'], 'media-new.php') !== false) : ?>
         <br/>
         <?php screen_icon(); ?>
-        <h2><?php _e('from URL'); ?></h2>
+        <h2><?php _e('Insert from URL', 'mediahelper'); ?></h2>
         <label class="url-media"><input name="src" type="text" value="http://" class="regular-text"></label>
-        <label class="setting">Titre: <input name="title" type="text" value=""></label>
+        <label class="setting"><?php _e('Title'); ?>: <input name="title" type="text" value=""></label>
         <?php submit_button(__('Save'), 'primary', 'submit', false); ?>
     <?php endif;
 }
