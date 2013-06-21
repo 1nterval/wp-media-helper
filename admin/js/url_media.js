@@ -100,6 +100,7 @@ jQuery(function($){
     // custom content : this view contains the main panel UI
     wp.media.view.URLMedia = wp.media.View.extend({
 	    className: 'urlmedia',
+	    template: wp.media.template('mediahelper-url-media'),
 	
 	    events: {
 		    'input':  'update',
@@ -108,40 +109,22 @@ jQuery(function($){
 	    },
 
 	    initialize: function() {
-	        console.log('view.URLMedia.initialize');
-	        
-	        // create an input for URL
-	        this.urlInput = this.make( 'input', {
-			    type:  'text',
-			    value: ''
-		    });
-	        this.$el.append(this.make('label', {
-	            'class': 'url-media'
-	        }, this.urlInput));
-	        
-	        // Title
-	        this.titleInput = this.make( 'input', {
-			    type:  'text',
-			    value: this.model.get('title') || ''
-		    });
-	        this.$el.append(this.make('label', {
-	            'class': 'setting'
-	        }, this.titleInput));
-	        
-	        this.model.on( 'change', this.render, this );
+	        this.render();
 	    },
 	
 	    render: function(){
 	        // copy model data to the screen
-	        this.urlInput.value = this.model.get('url') || 'http://';
-	        this.titleInput.value = this.model.get('title') || '';
+	        this.$el.html( this.template({ 
+	            url : this.model.get('url') || 'http://',
+	            title : this.model.get('title') || ''
+	        }) );
 	        return this;
 	    },
 	
 	    update: function( event ) {
 	        // copy user input into model
-		    if(event.target === this.urlInput) { this.model.set( 'url', event.target.value ); }
-		    if(event.target === this.titleInput) { this.model.set( 'title', event.target.value ); }
+		    if(event.target.id === 'mediahelper-url') { this.model.set( 'url', event.target.value ); }
+		    if(event.target.id === 'mediahelper-title') { this.model.set( 'title', event.target.value ); }
 	    }
     });
 

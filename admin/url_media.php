@@ -240,4 +240,17 @@ function mediahelper_url_media_manage_new_file(){
     }
 }
 
+add_action( 'print_media_templates', 'mediahelper_url_media_template' );
+function mediahelper_url_media_template(){
+    ?><script type="text/html" id="tmpl-mediahelper-url-media">
+        <label class="url-media">
+            <input type="text" value="{{ data.url }}" id="mediahelper-url"/>
+        </label>
+        <label class="setting">
+            <span><?php _e('Title') ?></span>
+            <input type="text" value="{{ data.title }}" id="mediahelper-title"/>
+        </label>
+    </script><?php
+}
+
 ?>
