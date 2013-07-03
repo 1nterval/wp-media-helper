@@ -203,4 +203,41 @@ function mediahelper_url_media_async_save_media(){
     
     exit();
 }
+
+add_action('post-upload-ui', 'mediahelper_url_media_after_upload');
+function mediahelper_url_media_after_upload(){
+    if(strpos($_SERVER['REQUEST_URI'], 'media-new.php') !== false) : ?>
+        <br/>
+        <?php screen_icon(); ?>
+        <h2><?php _e('from URL'); ?></h2>
+        <label class="url-media"><input name="src" type="text" value="http://" class="regular-text"></label>
+        <label class="setting">Titre: <input name="title" type="text" value=""></label>
+        <?php submit_button(__('Save'), 'primary', 'submit', false); ?>
+    <?php endif;
+}
+
+add_action('admin_init', 'mediahelper_url_media_manage_new_file');
+function mediahelper_url_media_manage_new_file(){
+    if(strpos($_SERVER['REQUEST_URI'], 'media-new.php') !== false && isset($_POST['src']) ) {
+    
+        $post_id = 0;
+        if(isset($_POST['mime_type']) && $_POST['mime_type'] != 'default') {
+            $mime = $_POST['mime_type'].'/';
+        }else {
+            $filetype = wp_check_filetype($_POST['src']);
+            $mime = $filetype['type'] ? $filetype['type'] : 'image/';
+        }
+        
+        // enregistrer le fichier dans la bibliothèque
+        $attachment_id = wp_insert_attachment(array(
+            'post_mime_type' => $mime,
+            'post_parent' => $post_id,
+            'post_title' => isset($_POST['title']) ? $_POST['title'] : '',
+            'post_excerpt' => isset($_POST['caption']) ? $_POST['caption'] : '',
+            'guid' => $_POST['src'],
+        ), false, $post_id);
+        
+    }
+}
+
 ?>
