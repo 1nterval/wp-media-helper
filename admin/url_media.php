@@ -206,7 +206,8 @@ function mediahelper_url_media_async_save_media(){
 
 add_action('post-upload-ui', 'mediahelper_url_media_after_upload');
 function mediahelper_url_media_after_upload(){
-    if(strpos($_SERVER['REQUEST_URI'], 'media-new.php') !== false) : ?>
+    global $pagenow;
+    if($pagenow == 'media-new.php') : ?>
         <br/>
         <?php screen_icon(); ?>
         <h2><?php _e('Insert from URL', 'mediahelper'); ?></h2>
@@ -218,12 +219,13 @@ function mediahelper_url_media_after_upload(){
 
 add_action('admin_init', 'mediahelper_url_media_manage_new_file');
 function mediahelper_url_media_manage_new_file(){
-    if(strpos($_SERVER['REQUEST_URI'], 'media-new.php') !== false && isset($_POST['src']) ) {
+    global $pagenow;
+    if($pagenow == 'media-new.php' && isset($_POST['src']) ) {
     
         $post_id = 0;
         if(isset($_POST['mime_type']) && $_POST['mime_type'] != 'default') {
             $mime = $_POST['mime_type'].'/';
-        }else {
+        } else {
             $filetype = wp_check_filetype($_POST['src']);
             $mime = $filetype['type'] ? $filetype['type'] : 'image/';
         }

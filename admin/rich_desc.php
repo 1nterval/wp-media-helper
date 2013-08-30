@@ -10,9 +10,13 @@
 
 add_action( 'edit_form_after_title', 'mediahelper_replace_action', 5);
 function mediahelper_replace_action(){
-    remove_action( 'edit_form_after_title', 'edit_form_image_editor' );
+    global $post_type;
+    if($post_type == 'attachment') {
+        remove_action( 'edit_form_after_title', 'edit_form_image_editor' );
+        add_action( 'edit_form_after_title', 'mediahelper_richdesc_edit_form_image_editor' );
+    }
 }
-add_action( 'edit_form_after_title', 'mediahelper_richdesc_edit_form_image_editor' );
+
 
 /**
  * Displays the image and editor in the post editor
@@ -54,7 +58,31 @@ function mediahelper_richdesc_edit_form_image_editor() {
 			<?php if ( $open ) wp_image_editor( $attachment_id ); ?>
 		</div>
 	</div>
-	<?php endif; ?>
+	<?php elseif ( $attachment_id && 0 === strpos( $post->post_mime_type, 'audio/' ) ):
+
+		echo wp_audio_shortcode( array( 'src' => $att_url ) );
+
+	elseif ( $attachment_id && 0 === strpos( $post->post_mime_type, 'video/' ) ):
+
+		$meta = wp_get_attachment_metadata( $attachment_id );
+		$w = ! empty( $meta['width'] ) ? min( $meta['width'], 600 ) : 0;
+		$h = 0;
+		if ( ! empty( $meta['height'] ) )
+			$h = $meta['height'];
+		if ( $h && $w < $meta['width'] )
+			$h = round( ( $meta['height'] * $w ) / $meta['width'] );
+
+		$attr = array( 'src' => $att_url );
+
+		if ( ! empty( $meta['width' ] ) )
+			$attr['width'] = $w;
+
+		if ( ! empty( $meta['height'] ) )
+			$attr['height'] = $h;
+
+		echo wp_video_shortcode( $attr );
+
+	endif; ?>
 
 	<div class="wp_attachment_details">
 		<p>
