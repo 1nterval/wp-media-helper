@@ -44,8 +44,21 @@ function mediahelper_init() {
     
 }
 
-if ( is_admin() ){
+$options = get_option('mediahelper');
 
+if ( !is_admin() ){
+
+    // load only the code needed by the activated tasks    
+    $front_path = plugin_dir_path(__FILE__).'/front/';
+    if(is_array($options)) {
+        foreach($options as $name => $option){
+            if($option['active'] == 'true' && is_file($front_path.$name.'.php')) {
+                require_once($front_path.$name.'.php');
+            }
+        }
+    }
+    
+} else {
     // add a link to the option pages in the plugins listing page
     add_filter('plugin_action_links', 'mediahelper_settings_action_link', 10, 2);
     function mediahelper_settings_action_link($links, $file){
@@ -57,7 +70,6 @@ if ( is_admin() ){
     }
 
     // load only the code needed by the activated tasks
-    $options = get_option('mediahelper');
     $admin_path = plugin_dir_path(__FILE__).'/admin/';
     if(is_array($options)) {
         foreach($options as $name => $option){

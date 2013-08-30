@@ -37,15 +37,6 @@ function mediahelper_image_link_get_image($menu_item){
     return $menu_item;
 }
 
-add_filter( 'walker_nav_menu_start_el', 'mediahelper_image_link_menu_walker', 10, 4);
-function mediahelper_image_link_menu_walker($item_output, $item, $depth, $args ){
-    if(!empty($item->image)){
-        $image = wp_get_attachment_image($item->image, apply_filters('mediahelper_image_link_size', array(9999, 38, false)), false, array("class" => "mediahelper_image_link_img"));
-        $item_output = preg_replace("/>.*<\/a>/", ">$image</a>", $item_output);
-    }
-    return $item_output;
-}
-
 add_action('wp_ajax_mediahelper_get_link_image', 'mediahelper_image_link_generate_image');
 function mediahelper_image_link_generate_image(){
     $id = (int)$_REQUEST['attachment_id'];
