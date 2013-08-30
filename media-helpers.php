@@ -35,6 +35,7 @@ function mediahelper_install() {
 	    'change_media_file' => array('active' => false),
 	    'rich_desc' => array('active' => false),
 	    'image_link' => array('active' => false),
+	    'custom_media_frame' => array('active' => false),
 	));
 }
 
@@ -125,6 +126,10 @@ if ( !is_admin() ){
                 'title' => __('Image link', 'mediahelper'), 
                 'desc' => __('Replace text by image in menu links', 'mediahelper'),
              ),
+             'custom_media_frame' => array(
+                'title' => __('Custom Media frame', 'mediahelper'), 
+                'desc' => __('Developer API to use a custom media frame that opens the Media Library and lets the user select a media', 'mediahelper'),
+             ),
         );
         
         add_settings_section('mediahelper', __('Media Helpers','mediahelper'), 'mediahelper_settings_section', 'media');
@@ -143,6 +148,7 @@ if ( !is_admin() ){
                 'change_media_file' => array('active' => false),
                 'rich_desc' => array('active' => false),
                 'image_link' => array('active' => false),
+                'custom_media_frame' => array('active' => false),
             ));
             
             foreach($text as $name => $labels){ 
