@@ -151,6 +151,12 @@ if ( !is_admin() ){
                 'custom_media_frame' => array('active' => false),
             ));
             
+            // image_link require custom_media_frame
+            if($options['image_link']['active'] == 'true' && $options['custom_media_frame']['active'] != 'true'){
+                $options['custom_media_frame']['active'] = true;
+                update_option('mediahelper', $options);
+            }
+            
             foreach($text as $name => $labels){ 
                 $option = isset($options[$name]) ? $options[$name] : array('active' => false); ?>
                 <label class="mediahelper_select_task" title="<?php echo $labels['desc'] ?>">

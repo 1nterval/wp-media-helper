@@ -151,24 +151,18 @@ class Walker_Nav_Menu_Edit_With_Image extends Walker_Nav_Menu {
 				</p>
 				<p class="field-image description description-wide">
 					<label for="edit-menu-item-image-<?php echo $item_id; ?>">
-						<?php _e( 'Image' ); ?>
 						<?php 
-					        if(empty($item->image)) {
-					            $titre = __( 'Add Image' );
-					            $hideDelete = 'style="display:none"';
-					        } else {
-					            $titre = __( 'Change Image' ); 
-					            echo wp_get_attachment_image($item->image, apply_filters('mediahelper_image_link_size', array(9999, 38, false)), false, array("class" => "mediahelper_image_link_img"));
-					            $hideDelete = '';
-					        }
-					        
-					    ?>
-					    <img title="<?php _e('Remove Image') ?>" src="<?php echo plugins_url('img/delete.png', dirname(__FILE__)) ?>" class="mediahelper_image_link_remove" <?php echo $hideDelete ?>/>
-						<a href="#" class="button select_mediahelper_link_image" title="<?php echo $titre ?>">
-						    <span class="wp-media-buttons-icon"></span>
-						    <?php echo $titre ?>
-						</a>
-						<input type="hidden" id="edit-menu-item-image-<?php echo $item_id; ?>" name="menu-item-image[<?php echo $item_id; ?>]" value="<?php echo esc_attr( $item->image ); ?>" />
+						    _e( 'Image' );
+						    mediahelper_mediaframe_setup($item->image, array(
+						        'input_name'        => "menu-item-image[$item_id]",
+						        'media_type_filter' => 'image',
+						    ), array(
+						        'add'        => __('Add Image', 'mediahelper'),
+						        'change'     => __('Change Image', 'mediahelper'),
+						        'remove'     => __('Remove Image', 'mediahelper'),
+						        'select'     => __('Select Image', 'mediahelper'),
+						    )); 
+						?>						
 					</label>
 				</p>
 				<p class="field-css-classes description description-thin">
