@@ -17,6 +17,8 @@
  *   - Update a media permalink each time its title is changed (now included in core for WP 3.5)
  *   - Change the parent of a previously attached media
  *   - Change the file of a media without creating a new media entry
+ *   - Use a rich editor for medias description
+ *   - Replace text by image in menu links
  *
  * Each helper can be enabled separately in the Media options page
  */
