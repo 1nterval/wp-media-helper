@@ -4,7 +4,7 @@
  * Author URI: http://www.1nterval.com
  * Description: Advanced helpers tasks for media
  * Author: Fabien Quatravaux
- * Version: 1.0
+ * Version: 1.1
  * Text Domain: mediahelper
  *
  * This plugin adds several helpers to the default WP Media Management :
@@ -17,6 +17,8 @@
  *   - Update a media permalink each time its title is changed (now included in core for WP 3.5)
  *   - Change the parent of a previously attached media
  *   - Change the file of a media without creating a new media entry
+ *   - Use a rich editor for medias description
+ *   - Replace text by image in menu links
  *
  * Each helper can be enabled separately in the Media options page
  */
@@ -31,6 +33,8 @@ function mediahelper_install() {
 	    'update_media_permalink' => array('active' => false),
 	    'change_parent' => array('active' => false),
 	    'change_media_file' => array('active' => false),
+	    'rich_desc' => array('active' => false),
+	    'image_link' => array('active' => false),
 	));
 }
 
@@ -42,8 +46,21 @@ function mediahelper_init() {
     
 }
 
-if ( is_admin() ){
+$options = get_option('mediahelper');
 
+if ( !is_admin() ){
+
+    // load only the code needed by the activated tasks    
+    $front_path = plugin_dir_path(__FILE__).'/front/';
+    if(is_array($options)) {
+        foreach($options as $name => $option){
+            if($option['active'] == 'true' && is_file($front_path.$name.'.php')) {
+                require_once($front_path.$name.'.php');
+            }
+        }
+    }
+    
+} else {
     // add a link to the option pages in the plugins listing page
     add_filter('plugin_action_links', 'mediahelper_settings_action_link', 10, 2);
     function mediahelper_settings_action_link($links, $file){
@@ -55,7 +72,6 @@ if ( is_admin() ){
     }
 
     // load only the code needed by the activated tasks
-    $options = get_option('mediahelper');
     $admin_path = plugin_dir_path(__FILE__).'/admin/';
     if(is_array($options)) {
         foreach($options as $name => $option){
@@ -101,6 +117,14 @@ if ( is_admin() ){
                 'title' => __('Change media file', 'mediahelper'), 
                 'desc' => __('Upload a new media file without recreating the media in the database', 'mediahelper'),
              ),
+             'rich_desc' => array(
+                'title' => __('Rich description', 'mediahelper'), 
+                'desc' => __('Use a rich editor for medias description', 'mediahelper'),
+             ),
+             'image_link' => array(
+                'title' => __('Image link', 'mediahelper'), 
+                'desc' => __('Replace text by image in menu links', 'mediahelper'),
+             ),
         );
         
         add_settings_section('mediahelper', __('Media Helpers','mediahelper'), 'mediahelper_settings_section', 'media');
@@ -110,8 +134,16 @@ if ( is_admin() ){
         add_settings_field('mediahelper_select_tasks', '<label for="mediahelper_select_tasks">'.__('Select helpers','mediahelper').'</label>', 'mediahelper_settings_select_tasks', 'media', 'mediahelper');
         function mediahelper_settings_select_tasks(){
             global $text;
-            $options = get_option('mediahelper');
-            if(!is_array($options)) return;
+            $options = get_option('mediahelper', array(
+                'url_media' => array('active' => false),
+                'duplicate_media' => array('active' => false),
+                'limit_image_resolution' => array('active' => false),
+                'update_media_permalink' => array('active' => false),
+                'change_parent' => array('active' => false),
+                'change_media_file' => array('active' => false),
+                'rich_desc' => array('active' => false),
+                'image_link' => array('active' => false),
+            ));
             
             foreach($text as $name => $labels){ 
                 $option = isset($options[$name]) ? $options[$name] : array('active' => false); ?>

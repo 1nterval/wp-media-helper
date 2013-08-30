@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Media helper package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Media helper 1.0\n"
-"Report-Msgid-Bugs-To: http://wordpress.org/tag/media-helper\n"
-"POT-Creation-Date: 2013-05-21 21:32:47+00:00\n"
+"Project-Id-Version: Media helper 1.1\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/media-helpers\n"
+"POT-Creation-Date: 2013-06-21 10:54:28+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: admin/change_media_file.php:13 media-helper.php:101
+#: admin/change_media_file.php:13 media-helpers.php:103
 msgid "Change media file"
 msgstr ""
 
@@ -46,158 +46,82 @@ msgid ""
 "%dpx). Please resize your image before uploading it again"
 msgstr ""
 
-#: admin/url_media.php:20
-msgid "Image Caption"
+#: admin/url_media.php:20 admin/url_media.php:212
+msgid "Insert from URL"
 msgstr ""
 
-#: admin/url_media.php:35 admin/url_media.php:102
-msgid "Image"
-msgstr ""
-
-#: admin/url_media.php:35
-msgid "Audio, Video, or Other File"
-msgstr ""
-
-#: admin/url_media.php:39
-msgid "URL"
-msgstr ""
-
-#: admin/url_media.php:47
-msgid "Title"
-msgstr ""
-
-#: admin/url_media.php:55
-msgid "Alternate Text"
-msgstr ""
-
-#: admin/url_media.php:58
-msgid "Alt text for the image, e.g. &#8220;The Mona Lisa&#8221;"
-msgstr ""
-
-#: admin/url_media.php:62
-msgid "Alignment"
-msgstr ""
-
-#: admin/url_media.php:65 admin/url_media.php:81
-msgid "None"
-msgstr ""
-
-#: admin/url_media.php:67
-msgid "Left"
-msgstr ""
-
-#: admin/url_media.php:69
-msgid "Center"
-msgstr ""
-
-#: admin/url_media.php:71
-msgid "Right"
-msgstr ""
-
-#: admin/url_media.php:77
-msgid "Link Image To:"
-msgstr ""
-
-#: admin/url_media.php:82
-msgid "Link to image"
-msgstr ""
-
-#: admin/url_media.php:83
-msgid "Enter a link URL or click above for presets."
-msgstr ""
-
-#: admin/url_media.php:89 admin/url_media.php:110
-msgid "Insert into Post"
-msgstr ""
-
-#: admin/url_media.php:91 admin/url_media.php:112
-msgid "Save"
-msgstr ""
-
-#: admin/url_media.php:97
-msgid "File type"
-msgstr ""
-
-#: admin/url_media.php:101
-msgid "Default"
-msgstr ""
-
-#: admin/url_media.php:103
-msgid "Audio"
-msgstr ""
-
-#: admin/url_media.php:104
-msgid "Video"
-msgstr ""
-
-#: admin/url_media.php:130
-msgid "Save all changes"
-msgstr ""
-
-#: admin/url_media.php:157
-msgid "Saved."
-msgstr ""
-
-#: media-helper.php:51
-msgid "Settings"
-msgstr ""
-
-#: media-helper.php:81
+#: media-helpers.php:83
 msgid "URL media"
 msgstr ""
 
-#: media-helper.php:82
+#: media-helpers.php:84
 msgid ""
 "Use an url as the media file and save it to the database like an uploaded "
 "media. You can also attach a new media to a post without specifying any "
 "file. This allows you to work on the media without having the file yet."
 msgstr ""
 
-#: media-helper.php:85
+#: media-helpers.php:87
 msgid "Duplicate media"
 msgstr ""
 
-#: media-helper.php:86
+#: media-helpers.php:88
 msgid ""
 "Make a copy of a media with all its meta keys so that it can be used "
 "elsewhere"
 msgstr ""
 
-#: media-helper.php:89
+#: media-helpers.php:91
 msgid "Limit image resolution"
 msgstr ""
 
-#: media-helper.php:90
+#: media-helpers.php:92
 msgid ""
 "Limit the resolution of uploaded images (WP allows you to limit the "
 "filesize, but not the resolution)"
 msgstr ""
 
-#: media-helper.php:93
+#: media-helpers.php:95
 msgid "Update media permalink"
 msgstr ""
 
-#: media-helper.php:94
+#: media-helpers.php:96
 msgid "Update a media permalink each time its title is changed"
 msgstr ""
 
-#: media-helper.php:97
+#: media-helpers.php:99
 msgid "Change parent"
 msgstr ""
 
-#: media-helper.php:98
+#: media-helpers.php:100
 msgid "Change the parent of a previously attached media"
 msgstr ""
 
-#: media-helper.php:102
+#: media-helpers.php:104
 msgid "Upload a new media file without recreating the media in the database"
 msgstr ""
 
-#: media-helper.php:106
+#: media-helpers.php:107
+msgid "Rich description"
+msgstr ""
+
+#: media-helpers.php:108
+msgid "Use a rich editor for medias description"
+msgstr ""
+
+#: media-helpers.php:111
+msgid "Image link"
+msgstr ""
+
+#: media-helpers.php:112
+msgid "Replace text by image in menu links"
+msgstr ""
+
+#: media-helpers.php:116
 msgid "Media Helpers"
 msgstr ""
 
-#: media-helper.php:110
+#: media-helpers.php:120
 msgid "Select helpers"
 msgstr ""
 
