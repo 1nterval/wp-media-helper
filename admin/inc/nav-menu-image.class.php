@@ -149,10 +149,11 @@ class Walker_Nav_Menu_Edit_With_Image extends Walker_Nav_Menu {
 						<?php _e( 'Open link in a new window/tab' ); ?>
 					</label>
 				</p>
-				<p class="field-image description description-wide">
-					<label for="edit-menu-item-image-<?php echo $item_id; ?>">
+				<p class="field-image description description-thin">
+					<label>
 						<?php 
 						    _e( 'Image' );
+						    echo " ";
 						    mediahelper_mediaframe_setup($item->image, array(
 						        'input_name'        => "menu-item-image[$item_id]",
 						        'media_type_filter' => 'image',
@@ -163,6 +164,20 @@ class Walker_Nav_Menu_Edit_With_Image extends Walker_Nav_Menu {
 						        'select'     => __('Select Image', 'mediahelper'),
 						    )); 
 						?>						
+					</label>
+				</p>
+				<p class="field-image-display description description-thin">
+					<label>
+					    <input type="checkbox" value="textdisplay" name="menu-item-image-display[<?php echo $item_id; ?>]" <?php checked( $item->image_display, 'textdisplay' ); ?>/> <?php _e('Display text with image', 'mediahelper') ?> 
+					</label>
+				</p>
+				<p class="field-image-size description description-wide">
+					<?php _e('Image size', 'mediahelper') ?>:
+					<label for="thumbnail_size_w"><?php _e('Width') ?>
+					    <input name="menu-item-image-size[<?php echo $item_id; ?>][0]" type="number" step="1" min="0" id="thumbnail_size_w" value="<?php echo $item->image_size[0] ?>" class="small-text">
+					</label>
+					<label for="thumbnail_size_h"><?php _e('Height') ?>
+					    <input name="menu-item-image-size[<?php echo $item_id; ?>][1]" type="number" step="1" min="0" id="thumbnail_size_h" value="<?php echo $item->image_size[1] ?>" class="small-text">
 					</label>
 				</p>
 				<p class="field-css-classes description description-thin">
