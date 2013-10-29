@@ -149,26 +149,35 @@ class Walker_Nav_Menu_Edit_With_Image extends Walker_Nav_Menu {
 						<?php _e( 'Open link in a new window/tab' ); ?>
 					</label>
 				</p>
-				<p class="field-image description description-wide">
-					<label for="edit-menu-item-image-<?php echo $item_id; ?>">
-						<?php _e( 'Image' ); ?>
+				<p class="field-image description description-thin">
+					<label>
 						<?php 
-					        if(empty($item->image)) {
-					            $titre = __( 'Add Image' );
-					            $hideDelete = 'style="display:none"';
-					        } else {
-					            $titre = __( 'Change Image' ); 
-					            echo wp_get_attachment_image($item->image, apply_filters('mediahelper_image_link_size', array(9999, 38, false)), false, array("class" => "mediahelper_image_link_img"));
-					            $hideDelete = '';
-					        }
-					        
-					    ?>
-					    <img title="<?php _e('Remove Image') ?>" src="<?php echo plugins_url('img/delete.png', dirname(__FILE__)) ?>" class="mediahelper_image_link_remove" <?php echo $hideDelete ?>/>
-						<a href="#" class="button select_mediahelper_link_image" title="<?php echo $titre ?>">
-						    <span class="wp-media-buttons-icon"></span>
-						    <?php echo $titre ?>
-						</a>
-						<input type="hidden" id="edit-menu-item-image-<?php echo $item_id; ?>" name="menu-item-image[<?php echo $item_id; ?>]" value="<?php echo esc_attr( $item->image ); ?>" />
+						    _e( 'Image' );
+						    echo " ";
+						    mediahelper_mediaframe_setup($item->image, array(
+						        'input_name'        => "menu-item-image[$item_id]",
+						        'media_type_filter' => 'image',
+						    ), array(
+						        'add'        => __('Add Image', 'mediahelper'),
+						        'change'     => __('Change Image', 'mediahelper'),
+						        'remove'     => __('Remove Image', 'mediahelper'),
+						        'select'     => __('Select Image', 'mediahelper'),
+						    )); 
+						?>						
+					</label>
+				</p>
+				<p class="field-image-display description description-thin">
+					<label>
+					    <input type="checkbox" value="textdisplay" name="menu-item-image-display[<?php echo $item_id; ?>]" <?php checked( $item->image_display, 'textdisplay' ); ?>/> <?php _e('Display text with image', 'mediahelper') ?> 
+					</label>
+				</p>
+				<p class="field-image-size description description-wide">
+					<?php _e('Image size', 'mediahelper') ?>:
+					<label for="thumbnail_size_w"><?php _e('Width') ?>
+					    <input name="menu-item-image-size[<?php echo $item_id; ?>][0]" type="number" step="1" min="0" id="thumbnail_size_w" value="<?php echo $item->image_size[0] ?>" class="small-text">
+					</label>
+					<label for="thumbnail_size_h"><?php _e('Height') ?>
+					    <input name="menu-item-image-size[<?php echo $item_id; ?>][1]" type="number" step="1" min="0" id="thumbnail_size_h" value="<?php echo $item->image_size[1] ?>" class="small-text">
 					</label>
 				</p>
 				<p class="field-css-classes description description-thin">

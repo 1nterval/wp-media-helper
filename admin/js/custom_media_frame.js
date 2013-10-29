@@ -1,17 +1,18 @@
 jQuery(function($){
 
-    $('#update-nav-menu').on('click', '.select_mediahelper_link_image',function(e){ 
+    $('.mediahelper_mediaframe_select').click(function(e){ 
     
-        var $input = $(e.currentTarget).siblings('input');
-        var $img = $(e.currentTarget).siblings('.mediahelper_image_link_img');
-        var $remove = $(e.currentTarget).siblings('.mediahelper_image_link_remove');
+        var $button = $(e.currentTarget);
+        var $input = $button.siblings('.mediahelper_mediaframe_input');
+        var $img = $button.siblings('.mediahelper_mediaframe_img');
+        var $remove = $button.siblings('.mediahelper_mediaframe_remove');
         
         // create the modal that selects Medias
         var frame = wp.media.frames.media_link_image = wp.media({
-            title: 'Sélectionner une image pour le lien',
+            title: $button.attr('data-title'),
 
             // Tell the modal to show only images.
-            library: { type: 'image' },
+            library: { type: $button.attr('data-filter') },
 
             multiple: false
         });
@@ -25,7 +26,7 @@ jQuery(function($){
             $remove.show();
             
             $.get( ajaxurl, {
-                action: 'mediahelper_get_link_image',
+                action: 'mediahelper_get_thumbnail',
                 attachment_id: attachment.id
             }).done( function(result) {
                 if($img.length) $img.remove();
@@ -38,10 +39,13 @@ jQuery(function($){
         return false;
     });
     
-    $('#update-nav-menu').on('click', '.mediahelper_image_link_remove', function(e){
+    $('.mediahelper_mediaframe_remove').click(function(e){
         var $remove = $(e.currentTarget);
-        $remove.siblings('input').val('');
-        $remove.siblings('.mediahelper_image_link_img').remove();
+        var $input = $(e.currentTarget).siblings('.mediahelper_mediaframe_input');
+        var $img = $(e.currentTarget).siblings('.mediahelper_mediaframe_img');
+        
+        $input.val('');
+        $img.remove();
         $remove.hide();
     });
 

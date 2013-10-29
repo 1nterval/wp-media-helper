@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Media helper 1.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/media-helpers\n"
-"POT-Creation-Date: 2013-06-21 10:54:28+00:00\n"
+"POT-Creation-Date: 2013-08-30 23:39:24+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: FR <LL@li.org>\n"
 
-#: admin/change_media_file.php:13 media-helpers.php:103
+#: admin/change_media_file.php:13 media-helpers.php:118
 msgid "Change media file"
 msgstr "Changer le fichier d'un média"
 
@@ -24,9 +24,46 @@ msgstr "Garder le nom de fichier original"
 msgid "Change parent page"
 msgstr "Changer de page parente"
 
+#: admin/custom_media_frame.php:17
+msgid "Add Media"
+msgstr "Ajouter un Média"
+
+#: admin/custom_media_frame.php:18
+msgid "Change Media"
+msgstr "Changer le Média"
+
+#: admin/custom_media_frame.php:19
+msgid "Remove Media"
+msgstr "Supprimer le Média"
+
+#: admin/custom_media_frame.php:20
+msgid "Select Media"
+msgstr "Sélectionner un Média"
+
 #: admin/duplicate_media.php:12
 msgid "Duplicate"
 msgstr "Dupliquer"
+
+#: admin/inc/nav-menu-image.class.php:155 admin/url_media.php:48
+#: admin/url_media.php:115
+msgid "Image"
+msgstr "Image"
+
+#: admin/inc/nav-menu-image.class.php:160
+msgid "Add Image"
+msgstr "Ajouter une Image"
+
+#: admin/inc/nav-menu-image.class.php:161
+msgid "Change Image"
+msgstr "Changer l&apos;Image"
+
+#: admin/inc/nav-menu-image.class.php:162
+msgid "Remove Image"
+msgstr "Supprimer l&apos;Image"
+
+#: admin/inc/nav-menu-image.class.php:163
+msgid "Select Image"
+msgstr "Sélectionner une Image"
 
 #: admin/limit_image_resolution.php:18 admin/limit_image_resolution.php:21
 msgid "Maximum allowed resolution"
@@ -48,15 +85,15 @@ msgstr ""
 "Votre image (%dpx X %dpx) excède la résolution maximum (%dpx X %dpx). "
 "Veuillez redimensionner votre image avant de l'importer à nouveau"
 
-#: admin/url_media.php:20 admin/url_media.php:212
+#: admin/url_media.php:20 admin/url_media.php:213
 msgid "Insert from URL"
 msgstr "Insérer à partir d'une adresse web"
 
-#: media-helpers.php:83
+#: media-helpers.php:98
 msgid "URL media"
 msgstr "média URL"
 
-#: media-helpers.php:84
+#: media-helpers.php:99
 msgid ""
 "Use an url as the media file and save it to the database like an uploaded "
 "media. You can also attach a new media to a post without specifying any "
@@ -67,11 +104,11 @@ msgstr ""
 "un article sans indiquer aucun fichier. Cela permet de travailler sur le média "
 "sans attendre d'avoir le fichier."
 
-#: media-helpers.php:87
+#: media-helpers.php:102
 msgid "Duplicate media"
 msgstr "Dupliquer le média"
 
-#: media-helpers.php:88
+#: media-helpers.php:103
 msgid ""
 "Make a copy of a media with all its meta keys so that it can be used "
 "elsewhere"
@@ -79,11 +116,11 @@ msgstr ""
 "Faire une copie d'un média avec toutes ses informations afin qu'il "
 "puisse être utilisé ailleurs."
 
-#: media-helpers.php:91
+#: media-helpers.php:106
 msgid "Limit image resolution"
 msgstr "Limiter la résolution des images"
 
-#: media-helpers.php:92
+#: media-helpers.php:107
 msgid ""
 "Limit the resolution of uploaded images (WP allows you to limit the "
 "filesize, but not the resolution)"
@@ -91,47 +128,60 @@ msgstr ""
 "Limiter la résolution des images téléchargées (par défaut, WP vous permet "
 "de limiter la taille du fichier, mais pas la résolution)"
 
-#: media-helpers.php:95
+#: media-helpers.php:110
 msgid "Update media permalink"
 msgstr "Mettre à jour les permaliens des médias"
 
-#: media-helpers.php:96
+#: media-helpers.php:111
 msgid "Update a media permalink each time its title is changed"
 msgstr "Mettre à jour le permalien d'un média chaque fois que l'on change son titre"
 
-#: media-helpers.php:99
+#: media-helpers.php:114
 msgid "Change parent"
 msgstr "Changer le parent"
 
-#: media-helpers.php:100
+#: media-helpers.php:115
 msgid "Change the parent of a previously attached media"
 msgstr "Change le parent d'un média précédemment téléchargé"
 
-#: media-helpers.php:104
+#: media-helpers.php:119
 msgid "Upload a new media file without recreating the media in the database"
 msgstr "Télécharge un nouveau fichier pour un média sans recréer ce média dans la base de données"
 
-#: media-helpers.php:107
+#: media-helpers.php:122
 msgid "Rich description"
 msgstr "Description riche"
 
-#: media-helpers.php:108
+#: media-helpers.php:123
 msgid "Use a rich editor for medias description"
 msgstr "Utiliser un éditeur riche pour la description des medias"
 
-#: media-helpers.php:111
+#: media-helpers.php:126
 msgid "Image link"
 msgstr "Lien image"
 
-#: media-helpers.php:112
+#: media-helpers.php:127
 msgid "Replace text by image in menu links"
 msgstr "Remplacer le texte par une image dans les liens de menus"
 
-#: media-helpers.php:116
+#: media-helpers.php:130
+msgid "Custom Media frame"
+msgstr "MediaFrame personnalisée"
+
+#: media-helpers.php:131
+msgid ""
+"Developer API to use a custom media frame that opens the Media Library and "
+"lets the user select a media"
+msgstr ""
+"API pour les développeurs permettant d'utiliser une MediaFrame personnalisée "
+"qui ouvre la bibliothèque de Médias et permet à l&apos;utilisateur de choisir "
+"un média"
+
+#: media-helpers.php:135
 msgid "Media Helpers"
 msgstr "Aides pour les Médias"
 
-#: media-helpers.php:120
+#: media-helpers.php:139
 msgid "Select helpers"
 msgstr "Sélectionner les aides"
 

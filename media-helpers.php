@@ -4,7 +4,7 @@
  * Author URI: http://www.1nterval.com
  * Description: Advanced helpers tasks for media
  * Author: Fabien Quatravaux
- * Version: 1.1
+ * Version: 1.2
  * Text Domain: mediahelper
  *
  * This plugin adds several helpers to the default WP Media Management :
@@ -35,6 +35,7 @@ function mediahelper_install() {
 	    'change_media_file' => array('active' => false),
 	    'rich_desc' => array('active' => false),
 	    'image_link' => array('active' => false),
+	    'custom_media_frame' => array('active' => false),
 	));
 }
 
@@ -125,6 +126,10 @@ if ( !is_admin() ){
                 'title' => __('Image link', 'mediahelper'), 
                 'desc' => __('Replace text by image in menu links', 'mediahelper'),
              ),
+             'custom_media_frame' => array(
+                'title' => __('Custom Media frame', 'mediahelper'), 
+                'desc' => __('Developer API to use a custom media frame that opens the Media Library and lets the user select a media', 'mediahelper'),
+             ),
         );
         
         add_settings_section('mediahelper', __('Media Helpers','mediahelper'), 'mediahelper_settings_section', 'media');
@@ -143,7 +148,14 @@ if ( !is_admin() ){
                 'change_media_file' => array('active' => false),
                 'rich_desc' => array('active' => false),
                 'image_link' => array('active' => false),
+                'custom_media_frame' => array('active' => false),
             ));
+            
+            // image_link require custom_media_frame
+            if($options['image_link']['active'] == 'true' && $options['custom_media_frame']['active'] != 'true'){
+                $options['custom_media_frame']['active'] = true;
+                update_option('mediahelper', $options);
+            }
             
             foreach($text as $name => $labels){ 
                 $option = isset($options[$name]) ? $options[$name] : array('active' => false); ?>

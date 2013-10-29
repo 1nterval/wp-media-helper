@@ -1,0 +1,21 @@
+.mediahelper_mediaframe_select {
+    padding-left: 0.4em;
+    margin: 0 5px;
+}
+
+.mediahelper_mediaframe_select .wp-media-buttons-icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    vertical-align: text-top;
+    margin: 0 2px;
+    background: url('../img/media-button.png') no-repeat top left;
+}
+
+.mediahelper_mediaframe_img, .mediahelper_mediaframe_remove {
+    vertical-align: middle;
+    max-width: 100px;
+    max-height: 25px;
+    width: auto;
+    height: auto;
+}
