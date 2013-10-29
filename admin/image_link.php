@@ -9,7 +9,7 @@
 
 $options = get_option('mediahelper');
 if(isset($options['custom_media_frame']) && $options['custom_media_frame']['active'] == 'true'){
-    require_once(plugin_dir_path(__FILE__).'inc/nav-menu-image.class.php');
+    require_once(dirname(__FILE__).'/inc/nav-menu-image.class.php');
 
     add_filter( 'wp_edit_nav_menu_walker', 'mediahelper_image_link_menu_walker_class');
     function mediahelper_image_link_menu_walker_class($class){

@@ -23,8 +23,9 @@
  * Each helper can be enabled separately in the Media options page
  */
  
+define('MEDIAHELPERS_PLUGIN_FILE', basename(dirname(__FILE__)).'/'.basename(__FILE__));
 
-register_activation_hook(__FILE__, 'mediahelper_install'); 
+register_activation_hook(MEDIAHELPERS_PLUGIN_FILE, 'mediahelper_install'); 
 function mediahelper_install() {
     add_option('mediahelper', array(
 	    'url_media' => array('active' => false),
@@ -43,7 +44,7 @@ add_action('init', 'mediahelper_init');
 function mediahelper_init() {
     
     // i18n
-    load_plugin_textdomain( 'mediahelper', false, basename(dirname(__FILE__)) . '/lang/' );
+    load_plugin_textdomain( 'mediahelper', false, dirname(MEDIAHELPERS_PLUGIN_FILE) . '/lang/' );
     
 }
 
@@ -52,7 +53,7 @@ $options = get_option('mediahelper');
 if ( !is_admin() ){
 
     // load only the code needed by the activated tasks    
-    $front_path = plugin_dir_path(__FILE__).'/front/';
+    $front_path = dirname(__FILE__).'/front/';
     if(is_array($options)) {
         foreach($options as $name => $option){
             if($option['active'] == 'true' && is_file($front_path.$name.'.php')) {
@@ -65,7 +66,7 @@ if ( !is_admin() ){
     // add a link to the option pages in the plugins listing page
     add_filter('plugin_action_links', 'mediahelper_settings_action_link', 10, 2);
     function mediahelper_settings_action_link($links, $file){
-        if ($file == plugin_basename(__FILE__)) {
+        if ($file == MEDIAHELPERS_PLUGIN_FILE) {
             $settings_link = '<a href="' . admin_url('options-media.php') . '">'.__('Settings').'</a>';
             array_unshift($links, $settings_link);
         }
@@ -73,7 +74,7 @@ if ( !is_admin() ){
     }
 
     // load only the code needed by the activated tasks
-    $admin_path = plugin_dir_path(__FILE__).'/admin/';
+    $admin_path = dirname(__FILE__).'/admin/';
     if(is_array($options)) {
         foreach($options as $name => $option){
             if($option['active'] == 'true' && is_file($admin_path.$name.'.php')) {
@@ -82,10 +83,12 @@ if ( !is_admin() ){
         }
     }
 
-    add_action('admin_print_styles-options-media.php', 'mediahelper_print_options_assets');
-    function mediahelper_print_options_assets(){
-        wp_enqueue_script('mediahelper', plugins_url('js/mediahelper.js', __FILE__), array('jquery'));
-        wp_enqueue_style('mediahelper', plugins_url('css/mediahelper.css', __FILE__));
+    add_action('admin_enqueue_scripts', 'mediahelper_print_options_assets');
+    function mediahelper_print_options_assets($hook){
+        if($hook == 'options-media.php') {
+            wp_enqueue_script('mediahelper', plugins_url('js/mediahelper.js', __FILE__), array('jquery'));
+            wp_enqueue_style('mediahelper', plugins_url('css/mediahelper.css', __FILE__));
+        }
     }
     
     // page d'options
