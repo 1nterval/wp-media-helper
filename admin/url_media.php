@@ -161,6 +161,7 @@ function mediahelper_url_media_save_media(){
         
         // enregistrer le fichier dans la bibliothèque
         $attachment_id = wp_insert_attachment(array(
+            'post_content' => '',
             'post_mime_type' => $mime,
             'post_parent' => $post_id,
             'post_title' => $_REQUEST['title'],
@@ -189,6 +190,7 @@ function mediahelper_url_media_async_save_media(){
     
     // enregistrer le fichier dans la bibliothèque
     $attachment_id = wp_insert_attachment(array(
+        'post_content' => '',
         'post_mime_type' => $mime,
         'post_parent' => $post_id,
         'post_title' => isset($_REQUEST['title']) ? $_REQUEST['title'] : '',
@@ -232,6 +234,7 @@ function mediahelper_url_media_manage_new_file(){
         
         // enregistrer le fichier dans la bibliothèque
         $attachment_id = wp_insert_attachment(array(
+            'post_content' => '',
             'post_mime_type' => $mime,
             'post_parent' => $post_id,
             'post_title' => isset($_POST['title']) ? $_POST['title'] : '',
